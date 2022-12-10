@@ -19,7 +19,13 @@ func main() {
 	println("Hello world")
 	e := echo.New()
 
-	e.POST("/PostUser", loginPostMethod)
+	// Login
+	e.GET("/Login", loginGetMethod)
+	e.POST("/Login", loginPostMethod)
+
+	// Register
+	e.GET("/Register", registerGetMethod)
+	e.POST("/Register", registerPostMethod)
 
 	e.GET("/index", indexGetMethod)
 
@@ -41,4 +47,16 @@ func loginPostMethod(c echo.Context) error {
 
 func indexGetMethod(c echo.Context) error {
 	return c.String(202, "Hello world from index")
+}
+
+func loginGetMethod(c echo.Context) (err error) {
+	err = nil
+}
+
+func registerGetMethod(c echo.Context) (err error) {
+	err = nil
+}
+
+func registerPostMethod(c echo.Context) (err error) {
+	err = nil
 }
