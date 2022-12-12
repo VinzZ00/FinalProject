@@ -3,7 +3,7 @@ module FinalProject
 go 1.18
 
 require (
-	github.com/labstack/echo v3.3.10+incompatible
+	github.com/go-sql-driver/mysql v1.7.0
 	github.com/labstack/echo/v4 v4.9.1
 )
 

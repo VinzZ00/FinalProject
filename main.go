@@ -1,10 +1,15 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+
+	"time"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // Type Declaration
@@ -16,6 +21,18 @@ type user struct {
 
 // Main function
 func main() {
+
+	db, err := sql.Open("mysql", "root@/dbName")
+
+	if err == nil {
+		fmt.Println("Database Connection Failed")
+	}
+
+	// Important Setting
+	db.SetConnMaxLifetime(time.Minute * 15)
+	db.SetMaxOpenConns(10)
+	db.SetMaxIdleConns(10)
+
 	println("Hello world")
 	e := echo.New()
 
@@ -51,12 +68,15 @@ func indexGetMethod(c echo.Context) error {
 
 func loginGetMethod(c echo.Context) (err error) {
 	err = nil
+	return
 }
 
 func registerGetMethod(c echo.Context) (err error) {
 	err = nil
+	return
 }
 
 func registerPostMethod(c echo.Context) (err error) {
 	err = nil
+	return
 }
